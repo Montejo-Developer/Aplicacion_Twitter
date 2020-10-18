@@ -1,0 +1,184 @@
+﻿<Window x:Class="capa_presentacion_WPF.Ventana_No_Sigo_Followers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:capa_presentacion_WPF"
+        mc:Ignorable="d"
+        Title="Seguidores No Seguidos" Height="750" Width="848"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <!-- añado los estilos de un fichero de diccionario de recursos -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="EstiloGeneral.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <Grid x:Name="ConsultaPantalla" Style="{StaticResource Grid}" Margin="0,0,-6,-5">
+
+        <Border Style="{StaticResource NegroBorde}" Margin="20,20,23,76" >
+            <StackPanel Margin="20" >
+                <Label Content="Followers que no sigo&#xD;&#xA;" 
+                        Style="{StaticResource titulo}"
+                       ></Label>
+                <Separator />
+
+                <Grid>
+                    <!-- Definición de 3 Columas -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Definición de 2 Filas-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--groupBox con el listado de  followers-->
+                    <GroupBox Grid.Column="0" Grid.Row="1"
+                              Style="{StaticResource GroupBox1}"
+                              Grid.ColumnSpan="3" Grid.RowSpan="2"
+                        x:Name="groupBox2" Header="Usuarios registrados" 
+                        Height="238" Width="740" Margin="14,20,14,0">
+
+                        <!-- Creamos un DataGrid con un Databinding a una coleccion -->
+                        <DataGrid x:Name="data" ItemsSource="{Binding}" 
+                                 Style="{StaticResource Datagrid1}"
+                                  Height="217" Width="710" 
+                       SelectionChanged="data_SelectionChanged">
+
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn >
+                                    <!-- Definición del template de visualización de columna. Usaremos un TextBlock -->
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <Image  x:Name="ImagenUsuario" Source="{Binding Path=Imagen}"
+                                                        Stretch="UniformToFill"
+                                                        Width="50" Height="50"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Binding="{Binding Nombre}" Width="638" Header="Nombre"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                    <!--groupBox con los detalles de los followers -->
+                    <GroupBox
+                        Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="1"
+                        x:Name="detallesusuario" Header="Detalles usuario"
+                        Height="225" Width="744" 
+                         Style="{StaticResource GroupBox1}" Margin="12,20,9,-3"
+                        >
+
+                        <Border Background="#0084b4" CornerRadius="20" Margin="5" Padding="10,10,10,5">
+                            <StackPanel Margin="0" >
+
+                                <Grid Height="154" HorizontalAlignment="Center" 
+                          Width="684" VerticalAlignment="Center" Margin="16,0,2,0">
+                                    <!--Definicion de la tabla-->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55*"/>
+                                        <ColumnDefinition Width="173*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <!--Para la imagen redondeada-->
+                                    <Ellipse Grid.Column="0" Grid.Row="0"  Height="139"
+                            Width="155" VerticalAlignment="Center"
+                            HorizontalAlignment="Center" Margin="0,10,10,10">
+                                        <Ellipse.Fill >
+                                            <ImageBrush  x:Name="Imagen"
+                                    Stretch="UniformToFill"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <StackPanel Background="#545d6a" x:Name="Detalle_deUsuario" VerticalAlignment="Center" 
+                            Margin="0,-10,-26,-19" Grid.Row="0" Height="183" HorizontalAlignment="Center" Width="545" RenderTransformOrigin="0.5,0.5" Grid.Column="1"
+                                 >
+
+                                        <Grid  Height="167" Margin="21,17,0,0" >
+                                            <!--id_follower,Nombre,Fecha_Creacion,ContSeguidores; -->
+                                            <!--Para id_follower-->
+                                            <!-- Definición de 3 Columas -->
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Definición de 2 Filas-->
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <!--Para la fecha de nombre-->
+                                            <Label x:Name="nombre_txt" Content="" Background="#545d6a"
+                                    Foreground="White" Grid.Row="0"  FontWeight="Bold"
+                                    Grid.Column="0" Grid.ColumnSpan="5"  Grid.RowSpan="1"
+                                    FontSize="16"/>
+
+                                            <TextBlock x:Name="id_follower_txt" Background="#545d6a"
+                                      TextWrapping="Wrap" FontStyle="Italic" FontWeight="Bold"
+                                           Padding="10"
+                                    Foreground="White" FontSize="15"  Grid.Row="1"
+                                    Grid.Column="0" Grid.ColumnSpan="5"  Grid.RowSpan="3" />
+
+                                            <!--Para el Fecha_Creacion-->
+                                            <Label Content="Fecha alta:  " Foreground="White"  Background="#545d6a"
+                                    Grid.Row="4" Grid.Column="0"
+                                    Grid.ColumnSpan="2"  Grid.RowSpan="2" Width="206"/>
+
+                                            <Label x:Name="fecha_creacion_txt"   
+                                    Foreground="White" FontSize="10"  
+                                       Background="#545d6a"
+                                    Grid.Row="4" Grid.Column="1" 
+                                    Grid.ColumnSpan="1" Grid.RowSpan="1"  />
+
+                                            <!--Para el ContSeguidores-->
+                                            <Label Content="Seguidores:  "  Foreground="White"  Background="#545d6a"
+                                    Grid.Row="5" Grid.Column="0" 
+                                    Grid.ColumnSpan="2" Width="210"/>
+                                            <Label x:Name="seguidores_txt" 
+                                    Background="#545d6a" Foreground="White"
+                                    FontSize="10"   Grid.Row="5" Grid.Column="1" 
+                                    Grid.ColumnSpan="1"  />
+
+
+                                        </Grid>
+
+                                    </StackPanel>
+
+                                </Grid>
+                            </StackPanel>
+
+                        </Border>
+
+
+
+                    </GroupBox>
+                </Grid>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

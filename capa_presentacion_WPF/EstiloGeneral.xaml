@@ -1,0 +1,165 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:capa_presentacion_WPF">
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- Indico otra vez al element al que se aplica y del que hereda -->
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <!-- Defino la apariencia gráfica del control -->
+
+                    <!-- Defino el Borde exterior del control -->
+                    <Border Name="b1" CornerRadius="5"
+                                BorderBrush="#FF241F75"
+                                BorderThickness="2"
+                               Background="#2E3137"
+                           >
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <!-- Defino un Trigger para su funcionamineto -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="b1" Property="BorderBrush" Value="#FF020202"/>
+                            <Setter TargetName="b1" Property="CornerRadius" Value="8"/>
+                        </Trigger>
+
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="#FFCDDDF4"/>
+        <Setter Property="Margin" Value="60 10"/>
+        <Setter Property="Foreground" Value="#FFD1C7C7"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+   
+    <Style TargetType="{x:Type Button}" x:Key="btn_simple">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Name="b1" CornerRadius="5"
+                                BorderBrush="#FF124F91"
+                                BorderThickness="4" Background="#545d6a">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="b1" Property="BorderBrush" Value="Black"/>
+                            <Setter TargetName="b1" Property="CornerRadius" Value="8"/>
+                            <Setter TargetName="b1" Property="Background" Value="#0084b4"/>
+                        </Trigger>
+
+
+                    </ControlTemplate.Triggers>
+
+
+                </ControlTemplate>
+            </Setter.Value>
+         
+        </Setter>
+
+
+        <Setter Property="Background" Value="#FF2C28BA"/>
+        <Setter Property="Margin" Value="60 10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="18"/>
+        
+    </Style>
+
+
+    <Style TargetType="{x:Type Label}" >
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="DemiBold"></Setter>
+
+    </Style>
+    
+    <!--ESTILO PARA  LOS LABELS DE TITULO-->
+    <Style TargetType="{x:Type Label}" x:Key="titulo">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
+    <!--Estilo para el grid -->
+    <Style TargetType="{x:Type Grid}" x:Key="Grid">
+        <Setter Property="Margin" Value="0,0,-6,-19"/>
+        <Setter Property="Background" Value="#FFB847F9"/>
+        
+    </Style>
+    
+    <!--Estilo para los bordes -->
+    <Style TargetType="{x:Type Border}" x:Key="NegroBorde">
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Background" Value="#2E3137"/>
+        <Setter Property="Margin" Value="20"/>
+    </Style>
+
+    <!--ESTILO para los groupbox -->
+
+    <Style TargetType="{x:Type GroupBox}"  x:Key="GroupBox1">
+        <Setter Property="Background" Value="#2E3137"/>
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="FontSize" Value="18.667"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+
+    </Style>
+
+    <Style TargetType="{x:Type StackPanel}" x:Key="Datos">
+        <Setter Property="Background" Value="#FF9336C0"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+
+    <!--estilo general para el datagrid -->
+    <Style TargetType="{x:Type DataGrid}"  x:Key="Datagrid1">
+     
+        <Setter Property="GridLinesVisibility" Value="None"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="AlternationCount" Value="1"/>
+        <Setter Property="AlternatingRowBackground" Value="#FFB48AEE"/>
+        <Setter Property="RowBackground" Value="#FF6058DF"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+        <Setter Property="ColumnHeaderHeight" Value="0"/>
+        <Setter Property="Background" Value="#FF9FAFC7"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="textBox">
+        <Setter Property="Margin" Value="10,49,0,0"/>
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+
+    <!--Estilo para el menu-->
+    <Style TargetType="{x:Type MenuItem}"  >
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="Stika Small"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="#2E3137"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Width" Value="210"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        
+    </Style>
+    
+    <!-- Creo un recurso de tipo coleccion vista, para poder aplicar filtros sobre el -->
+    <CollectionViewSource  x:Key="lista_usuarios"  Source="{Binding}" />
+
+</ResourceDictionary>
